@@ -8,9 +8,9 @@ function ImageViewer(image, container) {
 		if (layer.type === 'layer') {
 			var img = layer.image;
 			img.style.position = 'absolute';
-			img.style.width = layer.w + 'px';
-			img.style.height = layer.h + 'px';
-			subcontainer.appendChild(img);
+			img.style.left = layer.x + 'px';
+			img.style.top = layer.y + 'px';
+			subcontainer.insertBefore(img, subcontainer.firstChild);
 		} else if (layer.type === 'stack') {
 			var stackContainer = document.createElement('div');
 			stackContainer.style.position = 'absolute';
@@ -20,13 +20,11 @@ function ImageViewer(image, container) {
 			} else {
 				stackContainer.style.left = layer.x + 'px';
 				stackContainer.style.top = layer.y + 'px';
-				stackContainer.style.width = layer.w + 'px';
-				stackContainer.style.height = layer.h + 'px';
 			}
 			layer.layers.forEach(function(child) {
 				viewLayer(child, stackContainer);
 			});
-			subcontainer.appendChild(stackContainer);
+			subcontainer.insertBefore(stackContainer, subcontainer.firstChild);
 		} else {
 			throw new Error("Unknown layer type " + layer.type);
 		}

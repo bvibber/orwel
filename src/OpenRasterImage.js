@@ -101,7 +101,7 @@ OpenRasterLayerBase = function(loader, element) {
 };
 
 OpenRasterStack = function(loader, element) {
-	OpenRasterLayerBase.apply(this, loader, element);
+	OpenRasterLayerBase.apply(this, [loader, element]);
 	this.type = 'stack';
 	this.layers = [];
 	for (var node = element.firstChild; node; node = node.nextSibling) {
@@ -121,7 +121,7 @@ OpenRasterStack = function(loader, element) {
 
 OpenRasterLayer = function(loader, element) {
 	var self = this;
-	OpenRasterLayerBase.apply(this, loader, element);
+	OpenRasterLayerBase.apply(this, [loader, element]);
 	this.type = 'layer';
 	this.src = strAttr(element, 'src');
 	this.ready = false;
