@@ -1,0 +1,17 @@
+#main {
+	position: absolute;
+	left: 0;
+	right: 320px;
+	top: 0;
+	bottom: 0;
+	
+	background-color: #aaa;
+}
+
+#sidebar {
+	position: absolute;
+	right: 0;
+	width: 320px;
+	top: 0;
+	bottom: 0;
+}
